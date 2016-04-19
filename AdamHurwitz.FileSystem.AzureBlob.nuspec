@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Azure Blob file system for portable FTP server</title>
+    <authors>Adam Hurwitz</authors>
+    <owners>Microsoft</owners>
+    <projectUrl>https://github.com/adhurwit/AzureBlobFtp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FubarDevelopment's FTP server file system implementation for Azure Blob</description>
+    <releaseNotes>Initial release of package.</releaseNotes>
+    <copyright>Copyright 2016 Microsoft</copyright>
+  </metadata>
+  <files>
+    <file src="LICENSE.md" target="LICENSE.md" />
+    <file src="README.md" target="README.md" />
+  </files>
+</package>
