@@ -7,8 +7,8 @@
     <ProjectGuid>{9E617950-D041-47BA-B0E7-05E6D7A9ED28}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AdamHurwitz.FileSystem.AzureBlob</RootNamespace>
-    <AssemblyName>AdamHurwitz.FileSystem.AzureBlob</AssemblyName>
+    <RootNamespace>AdamHurwitz.FtpServer.FileSystem.AzureBlob</RootNamespace>
+    <AssemblyName>AdamHurwitz.FtpServer.FileSystem.AzureBlob</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

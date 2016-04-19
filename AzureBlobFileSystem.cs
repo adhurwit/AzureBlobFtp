@@ -8,7 +8,7 @@ using System.IO;
 using System.Threading;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace AdamHurwitz.FileSystem.AzureBlob
+namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
 {
     public class AzureBlobFileSystem : IUnixFileSystem
     {

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdamHurwitz.FileSystem.AzureBlob
+namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
 {
     public class AzureBlobFileSystemProvider : IFileSystemClassFactory
     {

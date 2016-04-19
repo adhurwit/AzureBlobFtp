@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdamHurwitz.FileSystem.AzureBlob", "AdamHurwitz.FileSystem.AzureBlob.csproj", "{9E617950-D041-47BA-B0E7-05E6D7A9ED28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdamHurwitz.FtpServer.FileSystem.AzureBlob", "AdamHurwitz.FtpServer.FileSystem.AzureBlob.csproj", "{9E617950-D041-47BA-B0E7-05E6D7A9ED28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
