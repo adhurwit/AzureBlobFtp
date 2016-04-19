@@ -7,6 +7,7 @@
     <authors>Adam Hurwitz</authors>
     <owners>Microsoft</owners>
     <projectUrl>https://github.com/adhurwit/AzureBlobFtp</projectUrl>
+    <licenseUrl>https://github.com/adhurwit/AzureBlobFtp/blob/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>FubarDevelopment's FTP server file system implementation for Azure Blob</description>
     <releaseNotes>Initial release of package.</releaseNotes>

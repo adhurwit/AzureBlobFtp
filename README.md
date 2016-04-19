@@ -26,7 +26,7 @@ This library is available on NuGet.
 
 Azure Blob is composed of three components: Account, Container, and Blobs. It does not explicitly support a folder structure, but it does support a virtual folder structure based on the use of slashes ("/") in the blob name. See the following article for more information - [Get started with Azure Blob storage using .NET](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/)
 
-This FTP file system implementation utilizes Azure Blob's virtual folder structure seamlessly for FTP clients. To support empty virtual directories, this library creates a dummy file named "___dirholder___.txt". This file will be visible in a storage explorer, but is hidden for an FTP client. This library also creates a top level folder called, FTPROOT. 
+This FTP file system implementation utilizes Azure Blob's virtual folder structure seamlessly for FTP clients. To support empty virtual directories, this library creates a dummy file named "\_\_\_dirholder\_\_\_.txt". This file will be visible in a storage explorer, but is hidden for an FTP client. This library also creates a top level folder called, FTPROOT. 
 
 
 
