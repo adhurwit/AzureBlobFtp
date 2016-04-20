@@ -9,7 +9,7 @@ This library provides real FTP support for Azure Blob. Files and directories can
 
 FubarDev's project contains a TestFtpServer that can be easily modified to try this code out. Simply use this line in place of the fsProvider 
 
-	var abProvider = new AdamHurwitz.FileSystem.AzureBlob.AzureBlobFileSystemProvider("storage_account_name", "storage_account_key", "container_name");
+	var abProvider = new AdamHurwitz.FtpServer.FileSystem.AzureBlob.AzureBlobFileSystemProvider("storage_account_name", "storage_account_key", "container_name");
 
 
 And make sure that you use it in the FtpServer ctor
