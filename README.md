@@ -4,6 +4,9 @@ This is a File System implementation to use Azure Blob Storage with [Fubar Devel
 
 This library provides real FTP support for Azure Blob. Files and directories can be created, deleted, and moved. The experience in your FTP client will be the same as FTP to a standard file system. 
 
+Available as a NuGet package - 
+[AdamHurwitz.FtpServer.FileSystem.AzureBlob](https://www.nuget.org/packages/AdamHurwitz.FtpServer.FileSystem.AzureBlob/)
+
 
 ## Get Started ##
 
