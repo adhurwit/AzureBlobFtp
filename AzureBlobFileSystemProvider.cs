@@ -1,50 +1,46 @@
-﻿using FubarDev.FtpServer.FileSystem;
+﻿using System.Threading.Tasks;
+using FubarDev.FtpServer.FileSystem;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
 {
     public class AzureBlobFileSystemProvider : IFileSystemClassFactory
     {
-        private readonly string _rootPath;
+        private readonly CloudBlobContainer _container;
+        private readonly string _rootPath = string.Empty;
 
-        private readonly bool _useUserIdAsSubFolder;
-        
-        /// <summary>
-        /// Gets or sets a value indicating whether deletion of non-empty directories is allowed.
-        /// </summary>
-        public bool AllowNonEmptyDirectoryDelete { get; set; }
+        public AzureBlobFileSystemProvider(string accountName, string accountKey, string container, string rootFolder) : this(accountName, accountKey, container)
+        {
+            _rootPath = rootFolder;
+        }
 
         public AzureBlobFileSystemProvider(string accountName, string accountKey, string container)
         {
-            StorageCredentials creds = new StorageCredentials(accountName, accountKey);
-            CloudStorageAccount storageAccount = new CloudStorageAccount(creds, true);
-            CloudBlobClient blob = storageAccount.CreateCloudBlobClient();
-            Container = blob.GetContainerReference(container);
-            Container.CreateIfNotExists();
+            var creds = new StorageCredentials(accountName, accountKey);
+            var storageAccount = new CloudStorageAccount(creds, true);
+            var blob = storageAccount.CreateCloudBlobClient();
+
+            _container = blob.GetContainerReference(container);
+            _container.CreateIfNotExists();
         }
 
-        private CloudBlobContainer Container;
+        /// <summary>
+        ///     Gets or sets a value indicating whether deletion of non-empty directories is allowed.
+        /// </summary>
+        public bool AllowNonEmptyDirectoryDelete { get; set; }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Task<IUnixFileSystem> Create(string userId, bool isAnonymous)
         {
-            var path = _rootPath;
-            if (_useUserIdAsSubFolder)
+            if (_rootPath == string.Empty)
             {
-                if (isAnonymous)
-                    userId = "anonymous";
-                path = Path.Combine(path, userId);
+                return Task.FromResult<IUnixFileSystem>(new AzureBlobFileSystem(_container));
             }
+            ;
 
-            return Task.FromResult<IUnixFileSystem>(new AzureBlobFileSystem(Container, userId));
+            return Task.FromResult<IUnixFileSystem>(new AzureBlobFileSystem(_container, _rootPath));
         }
     }
 }

@@ -1,11 +1,7 @@
-﻿using FubarDev.FtpServer.FileSystem;
+﻿using System;
+using FubarDev.FtpServer.FileSystem;
 using FubarDev.FtpServer.FileSystem.Generic;
 using Microsoft.WindowsAzure.Storage.Blob;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
 {
@@ -16,14 +12,15 @@ namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
             FileSystem = fileSystem;
             Item = item;
             if (Item.GetType().Name == "CloudBlobDirectory")
-                IsFolder  = true;
+            {
+                IsFolder = true;
+            }
             else
-                IsFolder  = false;
+            {
+                IsFolder = false;
+            }
 
-            Permissions = new GenericUnixPermissions(
-                new GenericAccessMode(true, true, IsFolder),
-                new GenericAccessMode(true, true, IsFolder),
-                new GenericAccessMode(true, true, IsFolder));
+            Permissions = new GenericUnixPermissions(new GenericAccessMode(true, true, IsFolder), new GenericAccessMode(true, true, IsFolder), new GenericAccessMode(true, true, IsFolder));
         }
 
         public bool IsFolder { get; }
@@ -39,9 +36,10 @@ namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
             get
             {
                 if (IsFolder)
+                {
                     return null;
-                else
-                    return ((CloudBlockBlob)Item).Properties.LastModified;
+                }
+                return ((CloudBlockBlob) Item).Properties.LastModified;
             }
         }
 
@@ -50,9 +48,10 @@ namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
             get
             {
                 if (IsFolder)
+                {
                     return null;
-                else
-                    return ((CloudBlockBlob)Item).Properties.LastModified;
+                }
+                return ((CloudBlockBlob) Item).Properties.LastModified;
             }
         }
 
@@ -62,16 +61,19 @@ namespace AdamHurwitz.FtpServer.FileSystem.AzureBlob
             {
                 if (IsFolder)
                 {
-                    var dir = (CloudBlobDirectory)Item;
-                    return dir.Prefix.Replace(dir.Parent.Prefix,"").TrimEnd('/');
+                    var dir = (CloudBlobDirectory) Item;
+
+                    if (dir.Parent.Prefix == string.Empty)
+                    {
+                        return dir.Prefix.TrimEnd('/');
+                    }
+
+                    return dir.Prefix.Replace(dir.Parent.Prefix, "").TrimEnd('/');
                 }
-                else
-                {
-                    var blob = (CloudBlockBlob)Item;
-                    return blob.Name.Replace(blob.Parent.Prefix, "");
-                }
+
+                var blob = (CloudBlockBlob) Item;
+                return blob.Name.Replace(blob.Parent.Prefix, "");
             }
         }
-
     }
 }
